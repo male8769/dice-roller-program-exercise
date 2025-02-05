@@ -1,18 +1,20 @@
-"use strict";
-
-function rolldice() {
-    var dice = Math.floor(Math.random() * 6) + 1;
-    return dice;
+function rollDice() {
     const numOfDice = document.getElementById("numOfDice").value;
-    const diceresult = document.getElementById("diceresult");   
-    const diceimages = document.getElementById("diceimages");
+    const diceResult = document.getElementById("diceResult");   
+    const diceImages = document.getElementById("diceImages");
     const values = [];  
     const images = [];  
+    let total = 0;
 
     for (let i = 0; i < numOfDice; i++) {
-        values.push(rolldice());
-        images.push(`<img src="images/dice${values[i]}.png" alt="dice${values[i]}">`);
+        const value = Math.floor(Math.random() * 6) + 1; 
+        values.push(value);
+        images.push(`<img src="dice_images/${value}.png">`);           
+        total += value;
+        console.log(total);
     }
-    diceresult.innerHTML = `You rolled: ${values.join(", ")}`;
-    diceimages.innerHTML = images.join("");
+  
+
+    diceResult.innerHTML = `You Rolled: ${values.join(", ")} which = ${total}`;
+    diceImages.innerHTML = images.join("");
 }
